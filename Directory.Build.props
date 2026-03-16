@@ -17,4 +17,8 @@
   <ItemGroup Condition="'$(IncludeReadmeInPack)' != 'false' and '$(IsPackable)' == 'true'">
     <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="\" Visible="false" />
   </ItemGroup>
+  <!-- Roslynator: code analysis (run on build) -->
+  <ItemGroup>
+    <PackageReference Include="Roslynator.Analyzers" Version="4.15.0" PrivateAssets="all" />
+  </ItemGroup>
 </Project>

@@ -16,13 +16,13 @@ validators/
 ## Что куда перенесено
 
 - **sources/**  
-  Lite.Validation.Rules.Inline, Lite.Validation, Lite.Validation.SourceGenerator, Lite.Validation.DependencyInjection, Lite.Validation.Integration.AspNetCore.Mvc, Lite.Validation.Integration.AspNetCore.FastEndpoints.
+  Lite.Validation.Rules.Inline, Lite.Validation, Lite.Validation.SourceGenerator, Lite.Validation.Integration.DependencyInjection, Lite.Validation.Integration.AspNetCore.Mvc, Lite.Validation.Integration.AspNetCore.FastEndpoints.
 
 - **test/**  
   Lite.Validation.Tests, Lite.Validation.SourceGenerator.Test, Lite.Validation.Integration.AspNetCore.Test.
 
 - **benchmarks/**  
-  Lite.Benchmarks, Lite.Benchmarks.AspNetCore, Lite.Benchmarks.AspNetCore.App.
+  Lite.Validation.Benchmarks, Lite.Validation.Benchmarks.AspNetCore, Lite.Validation.Benchmarks.AspNetCore.App.
 
 ## Ссылки между проектами
 
@@ -31,12 +31,12 @@ validators/
 
 ## Важные правки (уже внесены)
 
-1. **Lite.Benchmarks.AspNetCore**  
+1. **Lite.Validation.Benchmarks.AspNetCore**  
    - Удалён пакет `BenchmarkDotNet.Running` (нет такого пакета, всё в BenchmarkDotNet).  
-   - В .csproj задан `<StartupObject>Lite.Benchmarks.AspNetCore.Program</StartupObject>`, чтобы не было двух entry point (свой Program и Program из App).  
+   - В .csproj задан `<StartupObject>Lite.Validation.Benchmarks.AspNetCore.Program</StartupObject>`, чтобы не было двух entry point (свой Program и Program из App).  
    - В `WebApplicationFactory<>` используется `AppEntryPoint`, а не `Program` (статический тип нельзя использовать как type argument).
 
-2. **Lite.Benchmarks.AspNetCore.App**  
+2. **Lite.Validation.Benchmarks.AspNetCore.App**  
    - Добавлен класс `AppEntryPoint` для `WebApplicationFactory`.  
    - В `AddLiteValidatorsFromAssemblyOf<>` используется `OrderFluentValidator`, не `Program`.
 

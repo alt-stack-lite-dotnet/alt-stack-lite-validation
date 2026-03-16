@@ -14,7 +14,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lite.Validation", "sources\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lite.Validation.SourceGenerator", "sources\Lite.Validation.SourceGenerator\Lite.Validation.SourceGenerator.csproj", "{3B7E58AF-9B68-45DC-9382-A92636C212F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lite.Validation.DependencyInjection", "sources\Lite.Validation.DependencyInjection\Lite.Validation.DependencyInjection.csproj", "{5A6B7C8D-9E0F-1A2B-3C4D-5E6F7A8B9C0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lite.Validation.Integration.DependencyInjection", "sources\Lite.Validation.Integration.DependencyInjection\Lite.Validation.Integration.DependencyInjection.csproj", "{5A6B7C8D-9E0F-1A2B-3C4D-5E6F7A8B9C0D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lite.Validation.Integration.AspNetCore.Mvc", "sources\Lite.Validation.Integration.AspNetCore.Mvc\Lite.Validation.Integration.AspNetCore.Mvc.csproj", "{2EB1C607-0E17-4A54-A3DB-216C4DAA888D}"
 EndProject
@@ -26,11 +26,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lite.Validation.SourceGener
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lite.Validation.Integration.AspNetCore.Test", "test\Lite.Validation.Integration.AspNetCore.Test\Lite.Validation.Integration.AspNetCore.Test.csproj", "{AA1A7882-6765-4EDB-ADB0-7E46885311A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lite.Benchmarks", "benchmarks\Lite.Benchmarks\Lite.Benchmarks.csproj", "{E1F2A3B4-C5D6-47E8-F9A0-B1C2D3E4F5A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lite.Validation.Benchmarks", "benchmarks\Lite.Validation.Benchmarks\Lite.Validation.Benchmarks.csproj", "{E1F2A3B4-C5D6-47E8-F9A0-B1C2D3E4F5A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lite.Benchmarks.AspNetCore", "benchmarks\Lite.Benchmarks.AspNetCore\Lite.Benchmarks.AspNetCore.csproj", "{F2A3B4C5-D6E7-48F9-A0B1-C2D3E4F5A6B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lite.Validation.Benchmarks.AspNetCore", "benchmarks\Lite.Validation.Benchmarks.AspNetCore\Lite.Validation.Benchmarks.AspNetCore.csproj", "{F2A3B4C5-D6E7-48F9-A0B1-C2D3E4F5A6B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lite.Benchmarks.AspNetCore.App", "benchmarks\Lite.Benchmarks.AspNetCore.App\Lite.Benchmarks.AspNetCore.App.csproj", "{A3B4C5D6-E7F8-49A0-B1C2-D3E4F5A6B7C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lite.Validation.Benchmarks.AspNetCore.App", "benchmarks\Lite.Validation.Benchmarks.AspNetCore.App\Lite.Validation.Benchmarks.AspNetCore.App.csproj", "{A3B4C5D6-E7F8-49A0-B1C2-D3E4F5A6B7C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

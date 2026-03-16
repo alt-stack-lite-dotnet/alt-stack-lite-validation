@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0</TargetFramework>
-    <StartupObject>Lite.Benchmarks.AspNetCore.Program</StartupObject>
+    <StartupObject>Lite.Validation.Benchmarks.AspNetCore.Program</StartupObject>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lite.Benchmarks.AspNetCore.App\Lite.Benchmarks.AspNetCore.App.csproj" />
+    <ProjectReference Include="..\Lite.Validation.Benchmarks.AspNetCore.App\Lite.Validation.Benchmarks.AspNetCore.App.csproj" />
     <ProjectReference Include="..\..\sources\Lite.Validation.Integration.AspNetCore.Mvc\Lite.Validation.Integration.AspNetCore.Mvc.csproj" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.0" />
   </ItemGroup>

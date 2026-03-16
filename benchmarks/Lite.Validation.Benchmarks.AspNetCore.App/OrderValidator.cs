@@ -1,6 +1,6 @@
 using Lite.Validation.Fluent;
 
-namespace Lite.Benchmarks.AspNetCore.App;
+namespace Lite.Validation.Benchmarks.AspNetCore.App;
 
 public partial class OrderFluentValidator : FluentValidator<CreateOrderRequest>
 {

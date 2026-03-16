@@ -1,0 +1,11 @@
+# Mise (version manager): https://mise.jdx.dev
+# Устанавливает Python и .NET для этого репо.
+# После установки mise: mise install
+
+[tools]
+python = "3.12"
+dotnet = "10"
+
+# Опционально: отключить телеметрию .NET
+# [settings.dotnet]
+# cli_telemetry_optout = true

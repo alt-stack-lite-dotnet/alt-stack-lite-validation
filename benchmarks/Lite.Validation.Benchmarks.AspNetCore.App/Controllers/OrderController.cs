@@ -1,7 +1,7 @@
 using Lite.Validation;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Lite.Benchmarks.AspNetCore.App.Controllers;
+namespace Lite.Validation.Benchmarks.AspNetCore.App.Controllers;
 
 [ApiController]
 [Route("[controller]")]

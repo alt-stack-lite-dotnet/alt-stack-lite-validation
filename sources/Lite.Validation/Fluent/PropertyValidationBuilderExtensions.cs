@@ -22,9 +22,9 @@ namespace Lite.Validation.Fluent
             this IPropertyValidationBuilder<TType, TProperty> @this)
             => @this.AddRule(NotEmptyRule<TType, TProperty>.Shared);
 
-        public static IPropertyRuleBuilder<TType, string> NotEmpty<TType>(
-            this IPropertyValidationBuilder<TType, string> @this)
-            => @this.AddRule(NotEmptyStringRule<TType>.Shared);
+        public static IPropertyRuleBuilder<TType, string?> NotEmpty<TType>(
+            this IPropertyValidationBuilder<TType, string?> @this)
+            => @this.AddRule(new StringRuleAdapter<TType>(NotEmptyStringRule<TType>.Shared));
 
         public static IPropertyRuleBuilder<TType, TProperty> Empty<TType, TProperty>(
             this IPropertyValidationBuilder<TType, TProperty> @this)
@@ -58,20 +58,20 @@ namespace Lite.Validation.Fluent
 
         // ── String Length ───────────────────────────────────────────────────
 
-        public static IPropertyRuleBuilder<TType, string> Length<TType>(
-            this IPropertyValidationBuilder<TType, string> @this,
+        public static IPropertyRuleBuilder<TType, string?> Length<TType>(
+            this IPropertyValidationBuilder<TType, string?> @this,
             int min, int max)
-            => @this.AddRule(new LengthRule<TType>(min, max));
+            => @this.AddRule(new StringRuleAdapter<TType>(new LengthRule<TType>(min, max)));
 
-        public static IPropertyRuleBuilder<TType, string> MinimumLength<TType>(
-            this IPropertyValidationBuilder<TType, string> @this,
+        public static IPropertyRuleBuilder<TType, string?> MinimumLength<TType>(
+            this IPropertyValidationBuilder<TType, string?> @this,
             int min)
-            => @this.AddRule(new MinimumLengthRule<TType>(min));
+            => @this.AddRule(new StringRuleAdapter<TType>(new MinimumLengthRule<TType>(min)));
 
-        public static IPropertyRuleBuilder<TType, string> MaximumLength<TType>(
-            this IPropertyValidationBuilder<TType, string> @this,
+        public static IPropertyRuleBuilder<TType, string?> MaximumLength<TType>(
+            this IPropertyValidationBuilder<TType, string?> @this,
             int max)
-            => @this.AddRule(new MaximumLengthRule<TType>(max));
+            => @this.AddRule(new StringRuleAdapter<TType>(new MaximumLengthRule<TType>(max)));
 
         // ── Comparison ──────────────────────────────────────────────────────
 
@@ -109,23 +109,23 @@ namespace Lite.Validation.Fluent
 
         // ── String Pattern ──────────────────────────────────────────────────
 
-        public static IPropertyRuleBuilder<TType, string> Matches<TType>(
-            this IPropertyValidationBuilder<TType, string> @this,
+        public static IPropertyRuleBuilder<TType, string?> Matches<TType>(
+            this IPropertyValidationBuilder<TType, string?> @this,
             string pattern)
-            => @this.AddRule(new MatchesRule<TType>(pattern));
+            => @this.AddRule(new StringRuleAdapter<TType>(new MatchesRule<TType>(pattern)));
 
-        public static IPropertyRuleBuilder<TType, string> Matches<TType>(
-            this IPropertyValidationBuilder<TType, string> @this,
+        public static IPropertyRuleBuilder<TType, string?> Matches<TType>(
+            this IPropertyValidationBuilder<TType, string?> @this,
             Regex regex)
-            => @this.AddRule(new MatchesRule<TType>(regex));
+            => @this.AddRule(new StringRuleAdapter<TType>(new MatchesRule<TType>(regex)));
 
-        public static IPropertyRuleBuilder<TType, string> EmailAddress<TType>(
-            this IPropertyValidationBuilder<TType, string> @this)
-            => @this.AddRule(EmailAddressRule<TType>.Shared);
+        public static IPropertyRuleBuilder<TType, string?> EmailAddress<TType>(
+            this IPropertyValidationBuilder<TType, string?> @this)
+            => @this.AddRule(new StringRuleAdapter<TType>(EmailAddressRule<TType>.Shared));
 
-        public static IPropertyRuleBuilder<TType, string> CreditCard<TType>(
-            this IPropertyValidationBuilder<TType, string> @this)
-            => @this.AddRule(CreditCardRule<TType>.Shared);
+        public static IPropertyRuleBuilder<TType, string?> CreditCard<TType>(
+            this IPropertyValidationBuilder<TType, string?> @this)
+            => @this.AddRule(new StringRuleAdapter<TType>(CreditCardRule<TType>.Shared));
 
         // ── Enum ────────────────────────────────────────────────────────────
 
@@ -151,5 +151,12 @@ namespace Lite.Validation.Fluent
             this IPropertyValidationBuilder<TType, TProperty> @this,
             Func<TType, TProperty, ValueTask<bool>> validate)
             => @this.AddAsyncRule(new AsyncMustRule<TType, TProperty>(validate));
+    }
+
+    internal sealed class StringRuleAdapter<TType> : Rules.IRule<TType, string?>
+    {
+        private readonly Rules.IRule<TType, string> _inner;
+        public StringRuleAdapter(Rules.IRule<TType, string> inner) => _inner = inner;
+        public bool IsSatisfiedBy(TType target, string? value) => value is not null && _inner.IsSatisfiedBy(target, value);
     }
 }
