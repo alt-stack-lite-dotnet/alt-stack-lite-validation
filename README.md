@@ -84,12 +84,31 @@ dotnet test Lite.Validation.sln --no-build
 
 ---
 
+## Бенчмарки
+
+Сравнение с **FluentValidation** и **DataAnnotations** при одинаковых правилах (Name, Email, Age). Запуск:
+
+```bash
+dotnet run --project benchmarks/Lite.Benchmarks/Lite.Benchmarks.csproj -c Release -- --filter "*SimpleValidation*"
+```
+
+| Вариант | Valid (время) | Invalid (время) | Аллокации (Valid) |
+|--------|----------------|-----------------|-------------------|
+| FluentValidation (baseline) | 1.00× | 1.00× | baseline |
+| **Lite.Validation (Runtime)** | см. вывод | см. вывод | обычно меньше |
+| **Lite.Validation (Source-generated)** | быстрее | быстрее | минимум |
+| DataAnnotations | см. вывод | см. вывод | см. вывод |
+
+Source-generated вариант без рефлексии и `Expression.Compile` — ожидаемо быстрее и с меньшими аллокациями. Бенчмарки ASP.NET Core (MVC endpoint): проект `Lite.Benchmarks.AspNetCore`, класс `AspNetCoreValidationBenchmark`.
+
+---
+
 ## CI и публикация
 
 - **Сборка и тесты**: на каждый push в `main`/`master` и на PR запускаются `dotnet build` и `dotnet test`.
-- **Пакеты**: при пуше тега (например `v0.1.0`) собираются NuGet-пакеты и загружаются артефактом. Если в настройках репо задан секрет `NUGET_API_KEY`, пакеты автоматически пушатся на nuget.org.
+- **Пакеты**: при пуше тега (например `v0.1.0`) собираются NuGet-пакеты и загружаются артефактом. Если в настройках репо задан секрет `NUGET_API_KEY`, пакеты автоматически пушатся на nuget.org. Подробно: [docs/PUBLISHING.md](docs/PUBLISHING.md).
 
-Перед первым пушем замени в `Directory.Build.props` и в `nuget/Lite.Validation.nuspec` URL репозитория на свой.
+Перед первым пушем замени в `Directory.Build.props` и в `nuget/*.nuspec` URL репозитория на свой.
 
 ---
 
