@@ -1,4 +1,5 @@
-# CI: при пуше в любую ветку — сборка и тесты; при пуше тега (v*) — выкладка пакетов.
+# CI: при пуше в любую ветку — сборка и тесты.
+# Выкладка на NuGet только при пуше тега (v*) с ветки release.
 name: CI
 
 on:
@@ -8,6 +9,7 @@ on:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  RELEASE_BRANCH: release   # только теги с этой ветки триггерят pack + push
 
 jobs:
   build:
@@ -44,6 +46,16 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ensure tag is on release branch
+        run: |
+          git fetch origin "${{ env.RELEASE_BRANCH }}"
+          if ! git branch -r --contains $GITHUB_SHA | grep -q "origin/${{ env.RELEASE_BRANCH }}"; then
+            echo "::error::Tag must point to a commit on branch '${{ env.RELEASE_BRANCH }}'. Push the tag from ${{ env.RELEASE_BRANCH }} or merge your changes there first."
+            exit 1
+          fi
 
       - name: Install .NET SDK
         run: |
