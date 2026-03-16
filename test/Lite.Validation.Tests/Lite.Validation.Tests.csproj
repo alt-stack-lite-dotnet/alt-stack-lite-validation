@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
+    <NoWarn>$(NoWarn);CS8620;CS8602</NoWarn>
     <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
     <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GeneratedFiles</CompilerGeneratedFilesOutputPath>
   </PropertyGroup>
@@ -19,7 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\sources\Lite.Validation\Lite.Validation.csproj" />
-    <ProjectReference Include="..\..\sources\Lite.Validation.DependencyInjection\Lite.Validation.DependencyInjection.csproj" />
+    <ProjectReference Include="..\..\sources\Lite.Validation.Integration.DependencyInjection\Lite.Validation.Integration.DependencyInjection.csproj" />
     <ProjectReference Include="..\..\sources\Lite.Validation.SourceGenerator\Lite.Validation.SourceGenerator.csproj"
                       OutputItemType="Analyzer"
                       ReferenceOutputAssembly="false" />

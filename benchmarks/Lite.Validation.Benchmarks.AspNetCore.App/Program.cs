@@ -1,6 +1,6 @@
-using Lite.Validation.DependencyInjection;
+using Lite.Validation.Integration.DependencyInjection;
 
-namespace Lite.Benchmarks.AspNetCore.App;
+namespace Lite.Validation.Benchmarks.AspNetCore.App;
 
 /// <summary>Marker type for WebApplicationFactory (entry point must be non-static).</summary>
 public sealed class AppEntryPoint { }

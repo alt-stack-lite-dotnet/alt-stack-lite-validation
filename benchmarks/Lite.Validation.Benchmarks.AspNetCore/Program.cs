@@ -2,7 +2,7 @@ using BenchmarkDotNet.Running;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Diagnosers;
 
-namespace Lite.Benchmarks.AspNetCore;
+namespace Lite.Validation.Benchmarks.AspNetCore;
 
 public class Program
 {

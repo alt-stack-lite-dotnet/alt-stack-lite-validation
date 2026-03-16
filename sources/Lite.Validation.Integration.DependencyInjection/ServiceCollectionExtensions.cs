@@ -4,7 +4,7 @@ using System.Reflection;
 using Lite.Validation;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Lite.Validation.DependencyInjection;
+namespace Lite.Validation.Integration.DependencyInjection;
 
 /// <summary>
 /// Microsoft.Extensions.DependencyInjection integration for Lite.Validation.

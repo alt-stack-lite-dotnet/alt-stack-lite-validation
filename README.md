@@ -24,7 +24,7 @@
 | **Lite.Validation** | Ядро: `IValidator<T>`, `FluentValidator<T>`, `LiteValidator<T>`, встроенные правила. |
 | **Lite.Validation.SourceGenerator** | Roslyn source generator: генерация валидаторов из `FluentValidator<T>` на этапе компиляции. |
 | **Lite.Validation.Rules.Inline** | Дополнительные inline-правила (подключается ядром). |
-| **Lite.Validation.DependencyInjection** | `AddLiteValidatorsFromAssembly()` и регистрация в `IServiceCollection`. |
+| **Lite.Validation.Integration.DependencyInjection** | `AddLiteValidatorsFromAssembly()` и регистрация в `IServiceCollection`. |
 | **Lite.Validation.Integration.AspNetCore.Mvc** | Поддержка ASP.NET Core MVC (модель и фильтры). |
 | **Lite.Validation.Integration.AspNetCore.FastEndpoints** | Поддержка [FastEndpoints](https://fast-endpoints.com/). |
 
@@ -89,7 +89,7 @@ dotnet test Lite.Validation.sln --no-build
 Сравнение с **FluentValidation** и **DataAnnotations** при одинаковых правилах (Name, Email, Age). Запуск:
 
 ```bash
-dotnet run --project benchmarks/Lite.Benchmarks/Lite.Benchmarks.csproj -c Release -- --filter "*SimpleValidation*"
+dotnet run --project benchmarks/Lite.Validation.Benchmarks/Lite.Validation.Benchmarks.csproj -c Release -- --filter "*SimpleValidation*"
 ```
 
 | Вариант | Valid (время) | Invalid (время) | Аллокации (Valid) |
@@ -99,7 +99,7 @@ dotnet run --project benchmarks/Lite.Benchmarks/Lite.Benchmarks.csproj -c Releas
 | **Lite.Validation (Source-generated)** | быстрее | быстрее | минимум |
 | DataAnnotations | см. вывод | см. вывод | см. вывод |
 
-Source-generated вариант без рефлексии и `Expression.Compile` — ожидаемо быстрее и с меньшими аллокациями. Бенчмарки ASP.NET Core (MVC endpoint): проект `Lite.Benchmarks.AspNetCore`, класс `AspNetCoreValidationBenchmark`.
+Source-generated вариант без рефлексии и `Expression.Compile` — ожидаемо быстрее и с меньшими аллокациями. Бенчмарки ASP.NET Core (MVC endpoint): проект `Lite.Validation.Benchmarks.AspNetCore`, класс `AspNetCoreValidationBenchmark`.
 
 ---
 

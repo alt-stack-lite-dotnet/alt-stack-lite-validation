@@ -1,5 +1,5 @@
 using Lite.Validation;
-using Lite.Validation.DependencyInjection;
+using Lite.Validation.Integration.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Lite.Validation.Tests;

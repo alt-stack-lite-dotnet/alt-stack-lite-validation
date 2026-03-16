@@ -8,6 +8,9 @@ on:
     branches: [ main, master ]
   workflow_dispatch:   # Ручной запуск: Actions → CI → Run workflow
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
     runs-on: ubuntu-latest

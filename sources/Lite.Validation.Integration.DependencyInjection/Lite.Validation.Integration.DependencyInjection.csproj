@@ -4,7 +4,7 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
-        <PackageId>Lite.Validation.DependencyInjection</PackageId>
+        <PackageId>Lite.Validation.Integration.DependencyInjection</PackageId>
         <Description>Microsoft.Extensions.DependencyInjection integration for Lite.Validation. AddLiteValidatorsFromAssembly() to register LiteValidator and FluentValidator subclasses.</Description>
         <PackageTags>validation;dependency-injection;lite;di</PackageTags>
     </PropertyGroup>

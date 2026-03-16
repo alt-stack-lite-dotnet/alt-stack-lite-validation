@@ -5,7 +5,7 @@ using Lite.Validation.Fluent;
 using LiteValidationResult = Lite.Validation.ValidationResult;
 using DataAnnotationsValidationResult = System.ComponentModel.DataAnnotations.ValidationResult;
 
-namespace Lite.Benchmarks.Validation;
+namespace Lite.Validation.Benchmarks.Validation;
 
 /// <summary>Source-generated validator (same rules as LiteSimpleValidator).</summary>
 public partial class LiteSgValidator : FluentValidator<TestModel>

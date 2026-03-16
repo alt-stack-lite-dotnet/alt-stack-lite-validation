@@ -1,6 +1,6 @@
-﻿using BenchmarkDotNet.Running;
+using BenchmarkDotNet.Running;
 
-namespace Lite.Benchmarks;
+namespace Lite.Validation.Benchmarks;
 
 public class Program
 {
