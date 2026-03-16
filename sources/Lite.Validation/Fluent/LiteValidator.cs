@@ -10,18 +10,22 @@ namespace Lite.Validation.Fluent;
 /// </summary>
 public class LiteValidator<T> : IValidator<T>, IAsyncValidator<T>
 {
-    private readonly CompiledPropertyValidatorBase<T>[] _compiled;
+    private readonly ValidationBuilder<T> _builder;
+    private readonly Lazy<CompiledPropertyValidatorBase<T>[]> _compiled;
 
     public LiteValidator(ValidationBuilder<T> builder)
     {
-        _compiled = builder.Compile();
+        _builder = builder;
+        _compiled = new Lazy<CompiledPropertyValidatorBase<T>[]>(() => _builder.Compile());
     }
+
+    private CompiledPropertyValidatorBase<T>[] Compiled => _compiled.Value;
 
     public bool IsAsync
     {
         get
         {
-            foreach (var v in _compiled)
+            foreach (var v in Compiled)
             {
                 if (v.HasAsyncRules) return true;
             }
@@ -32,8 +36,9 @@ public class LiteValidator<T> : IValidator<T>, IAsyncValidator<T>
     public ValidationResult Validate(T target)
     {
         var result = new ValidationResult();
-        for (var i = 0; i < _compiled.Length; i++)
-            _compiled[i].Validate(target, ref result);
+        var compiled = Compiled;
+        for (var i = 0; i < compiled.Length; i++)
+            compiled[i].Validate(target, ref result);
         return result;
     }
 
@@ -43,9 +48,10 @@ public class LiteValidator<T> : IValidator<T>, IAsyncValidator<T>
             return Validate(target);
 
         var result = new ValidationResult();
-        for (var i = 0; i < _compiled.Length; i++)
+        var compiled = Compiled;
+        for (var i = 0; i < compiled.Length; i++)
         {
-            var list = await _compiled[i].ValidateAsync(target, cancellationToken).ConfigureAwait(false);
+            var list = await compiled[i].ValidateAsync(target, cancellationToken).ConfigureAwait(false);
             if (list is not null && list.Count > 0)
                 result.AddRange(list);
         }
